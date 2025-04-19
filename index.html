@@ -5,90 +5,116 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joki MLBB • Murah & Aman</title>
   <style>
+    :root {
+      --bg-color: #313133;
+      --card-bg: #3f3f42;
+      --accent: #76c7ff;
+      --text: #f0f0f0;
+      --subtext: #ccc;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #313133;
-      color: #f0f0f0;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.6;
     }
 
     header {
-      padding: 2rem;
+      padding: 3rem 1rem;
       text-align: center;
-      background-color: #3a3a3c;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      background: linear-gradient(145deg, #3a3a3c, #2a2a2c);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
 
     header h1 {
-      margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
 
     header p {
-      margin-top: 0.5rem;
-      color: #ccc;
+      color: var(--subtext);
+      font-size: 1.1rem;
     }
 
     section {
-      padding: 2rem;
-      max-width: 700px;
+      padding: 2.5rem 1.5rem;
+      max-width: 800px;
       margin: auto;
     }
 
     h2 {
-      border-bottom: 1px solid #555;
-      padding-bottom: 0.5rem;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.75rem;
     }
 
     ul {
       list-style: none;
       padding: 0;
+      display: grid;
+      gap: 1rem;
     }
 
     li {
-      margin: 0.5rem 0;
-      background-color: #3f3f42;
-      padding: 0.75rem;
-      border-radius: 8px;
+      background-color: var(--card-bg);
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      font-size: 1.05rem;
     }
 
     a {
-      color: #76c7ff;
+      color: var(--accent);
       text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #a4ddff;
+    }
+
+    .contact p {
+      margin: 0.75rem 0;
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem;
       background-color: #2a2a2c;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: #aaa;
+      border-top: 1px solid #444;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Jasa Joki Mobile Legends</h1>
+    <h1>Kyrepedia Joki  </h1>
     <p>Aman • Murah • Garansi 100%</p>
   </header>
 
   <section id="harga">
     <h2>Daftar Harga</h2>
     <ul>
-      <li>Warrior → Elite: Rp10.000</li>
-      <li>Elite → Master: Rp15.000</li>
-      <li>Master → Grandmaster: Rp20.000</li>
-      <li>Grandmaster → Epic: Rp25.000</li>
-      <li>Epic → Legend: Rp40.000</li>
-      <li>Legend → Mythic: Rp60.000</li>
+      <li><strong>Grandmaster:</strong> Rp2.000 / star</li>
+      <li><strong>Epic:</strong> Rp3.000 / star</li>
+      <li><strong>Legend:</strong> Rp5.000 / star</li>
+      <li><strong>Mythic:</strong> Rp11.000 / star</li>
+      <li><strong>Mythic Grading:</strong> Rp7.000 / win</li>
+      <li><strong>Honor:</strong> Rp17.000 / star</li>
+      <li><strong>Glory:</strong> Rp25.000 / star</li>
+      <li><strong>Immortal:</strong> Rp30.000 / star</li>
+      
     </ul>
   </section>
 
-  <section id="kontak">
+  <section id="kontak" class="contact">
     <h2>Order Sekarang</h2>
-    <p>📱 WhatsApp: <a href="https://wa.me/62xxxxxxxxxx" target="_blank">Chat Sekarang</a></p>
-    <p>💬 Discord: username#1234</p>
-    <p>📷 Instagram: <a href="https://instagram.com/storemu" target="_blank">@storemu</a></p>
+    <p>📱 WhatsApp: <a href="https://wa.me/6285234444043" target="_blank">Chat Sekarang</a></p>
+    <p>📷 Instagram: <a href="https://instagram.com/kyrepedia" target="_blank">@kyrepedia</a></p>
   </section>
 
   <footer>
