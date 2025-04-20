@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Joki MLBB • Murah & Aman</title>
+  <title>Kyrepedia • Murah & Aman</title>
   <style>
     :root {
       --bg-color: #313133;
@@ -11,6 +11,8 @@
       --accent: #76c7ff;
       --text: #f0f0f0;
       --subtext: #ccc;
+      --kyre: #ccc8c5;
+      --pedia: #76c7ff;
     }
 
     body {
@@ -21,21 +23,44 @@
       line-height: 1.6;
     }
 
-    header {
-      padding: 3rem 1rem;
-      text-align: center;
-      background: linear-gradient(145deg, #3a3a3c, #2a2a2c);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    .navbar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 2rem;
+      background-color: #2a2a2c;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
 
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+    .navbar img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
     }
 
-    header p {
+    .site-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .site-title .kyre {
+      color: var(--kyre);
+    }
+
+    .site-title .pedia {
+      color: var(--pedia);
+      text-shadow: 0 0 5px var(--pedia), 0 0 10px var(--pedia), 0 0 20px var(--pedia);
+    }
+
+    .tagline {
       color: var(--subtext);
-      font-size: 1.1rem;
+      font-size: 0.9rem;
+    }
+
+    header {
+      text-align: center;
+      padding: 1.5rem 1rem 0.5rem;
     }
 
     section {
@@ -49,6 +74,7 @@
       margin-bottom: 1rem;
       border-left: 4px solid var(--accent);
       padding-left: 0.75rem;
+      color: var(--accent);
     }
 
     ul {
@@ -91,23 +117,29 @@
   </style>
 </head>
 <body>
+  <div class="navbar">
+    <img src="logo.png" alt="Logo Store">
+    <div>
+      <div class="site-title"><span class="kyre">Kyre</span><span class="pedia">pedia</span></div>
+      <div class="tagline">Aman • Murah • Garansi 100%</div>
+    </div>
+  </div>
+
   <header>
-    <h1>Kyrepedia Joki  </h1>
-    <p>Aman • Murah • Garansi 100%</p>
+    <p><strong style="color: #f58b54;">⭐ Terpercaya Sejak 2020 • Fast Respon • 100% Aman</strong></p>
   </header>
 
   <section id="harga">
     <h2>Daftar Harga</h2>
     <ul>
-      <li><strong>Grandmaster:</strong> Rp2.000 / star</li>
-      <li><strong>Epic:</strong> Rp3.000 / star</li>
-      <li><strong>Legend:</strong> Rp5.000 / star</li>
-      <li><strong>Mythic:</strong> Rp11.000 / star</li>
+      <li><strong>Grandmaster:</strong> Rp2.000 / ⭐</li>
+      <li><strong>Epic:</strong> Rp3.000 / ⭐</li>
+      <li><strong>Legend:</strong> Rp5.000 / ⭐</li>
+      <li><strong>Mythic:</strong> Rp11.000 / ⭐</li>
       <li><strong>Mythic Grading:</strong> Rp7.000 / win</li>
-      <li><strong>Honor:</strong> Rp17.000 / star</li>
-      <li><strong>Glory:</strong> Rp25.000 / star</li>
-      <li><strong>Immortal:</strong> Rp30.000 / star</li>
-      
+      <li><strong>Honor:</strong> Rp17.000 / ⭐</li>
+      <li><strong>Glory:</strong> Rp25.000 / ⭐</li>
+      <li><strong>Immortal:</strong> Rp30.000 / ⭐</li>
     </ul>
   </section>
 
