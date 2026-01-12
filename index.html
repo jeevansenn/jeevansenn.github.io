@@ -1,156 +1,220 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kyrepedia • Murah & Aman</title>
-  <style>
-    :root {
-      --bg-color: #313133;
-      --card-bg: #3f3f42;
-      --accent: #76c7ff;
-      --text: #f0f0f0;
-      --subtext: #ccc;
-      --kyre: #ccc8c5;
-      --pedia: #76c7ff;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAC - Teens Academic Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Great+Vibes&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS CORE (TIDAK BERUBAH) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: #000; color: #fff; overflow-x: hidden; }
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text);
-      line-height: 1.6;
-    }
+        nav {
+            width: 100%; padding: 15px 50px; position: fixed; top: 0; z-index: 1000;
+            background: rgba(0, 0, 0, 0.95); border-bottom: 1px solid #222;
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+        .logo img { height: 45px; width: auto; }
+        .nav-links a { color: #888; text-decoration: none; margin: 0 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: #fff; }
 
-    .navbar {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 2rem;
-      background-color: #2a2a2c;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
+        .btn-servant {
+            background: #fff; color: #000; border: none; padding: 12px 28px;
+            font-weight: 700; font-size: 12px; cursor: pointer; border-radius: 4px;
+            transition: all 0.4s ease; text-transform: uppercase;
+        }
+        .btn-servant:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(255, 255, 255, 0.9); }
 
-    .navbar img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
+        .hero { height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; text-align: center; }
+        .hero-bg { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            background-image: url('backgroundtac.png'); background-size: cover; background-position: center; 
+            filter: brightness(35%); z-index: -1; 
+        }
+        .hero-content h1 { font-family: 'Great Vibes', cursive; font-size: clamp(80px, 15vw, 180px); text-shadow: 0 0 25px rgba(255, 255, 255, 0.7); font-weight: 400; }
+        .hero-content h2 { font-size: clamp(16px, 2vw, 24px); letter-spacing: 5px; text-transform: uppercase; color: #eee; }
 
-    .site-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
+        .about { background: #fff; color: #000; padding: 120px 50px; }
+        .about-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 80px; flex-wrap: wrap; }
+        .about-image-wrapper { position: relative; }
+        .about-image-wrapper::after { content: ''; position: absolute; top: 20px; left: 20px; width: 100%; height: 100%; background: #000; z-index: 1; }
+        .about-image { width: 400px; height: 450px; object-fit: cover; position: relative; z-index: 2; border: 1px solid #000; }
+        .about-text { flex: 1; min-width: 300px; }
+        .about-text h3 { font-family: 'Montserrat', sans-serif; font-size: 45px; font-weight: 900; margin-bottom: 25px; }
+        .about-text p { font-family: 'Montserrat', sans-serif; font-size: 17px; line-height: 1.9; color: #222; }
 
-    .site-title .kyre {
-      color: var(--kyre);
-    }
+        .pastor-mini { padding: 100px 50px; background: #000; display: flex; justify-content: center; border-top: 1px solid #111; }
+        .pastor-container { max-width: 1100px; width: 100%; display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
+        .pastor-img-small { width: 350px; height: 450px; object-fit: cover; filter: grayscale(100%); border: 1px solid #333; }
+        .pastor-info-small h2 { font-family: 'Great Vibes', cursive; font-size: 70px; color: #fff; }
 
-    .site-title .pedia {
-      color: var(--pedia);
-      text-shadow: 0 0 5px var(--pedia), 0 0 10px var(--pedia), 0 0 20px var(--pedia);
-    }
+        #servant-page {
+            position: fixed; top: 0; left: 100%; width: 100%; height: 100%;
+            background: #000; z-index: 2000; transition: 0.7s cubic-bezier(0.85, 0, 0.15, 1);
+            overflow-y: auto; padding: 100px 50px;
+        }
+        #servant-page.active { left: 0; }
+        .close-page { position: absolute; top: 35px; right: 50px; font-size: 45px; cursor: pointer; color: #fff; }
+        .servants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 50px auto; }
+        .servant-card { background: #080808; border: 1px solid #1a1a1a; border-radius: 25px; padding: 50px; text-align: center; transition: 0.4s; cursor: pointer; }
+        .servant-card:hover { border-color: #fff; transform: translateY(-15px); }
+        .servant-img { width: 160px; height: 160px; border-radius: 50%; border: 3px solid #fff; margin: 0 auto 20px; object-fit: cover; }
 
-    .tagline {
-      color: var(--subtext);
-      font-size: 0.9rem;
-    }
+        /* --- BIODATA MODAL DENGAN FIX SCROLL --- */
+        .modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 3000; 
+            left: 0; top: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.98); 
+            overflow-y: auto; /* INI PENAMBAHAN AGAR BISA SCROLL */
+            padding: 20px 0;
+        }
+        .modal-content { 
+            background: #050505; border: 1px solid #333; border-radius: 30px; 
+            width: 95%; max-width: 650px; 
+            margin: 40px auto; /* Margin auto menjaga posisi di tengah saat scroll */
+            padding: 50px; 
+            text-align: center; position: relative; 
+        }
 
-    header {
-      text-align: center;
-      padding: 1.5rem 1rem 0.5rem;
-    }
+        .bio-grid { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 25px; 
+            text-align: left; background: #0f0f0f; padding: 30px; 
+            border-radius: 20px; margin: 30px 0; border: 1px solid #1a1a1a;
+        }
+        .bio-item { display: flex; flex-direction: column; gap: 5px; }
+        .bio-item label { font-size: 11px; color: #555; text-transform: uppercase; font-weight: 900; letter-spacing: 1px; }
+        .bio-item span { font-size: 16px; color: #fff; font-family: 'Montserrat', sans-serif; }
+        .bio-full { grid-column: span 2; padding-top: 15px; border-top: 1px solid #222; }
 
-    section {
-      padding: 2.5rem 1.5rem;
-      max-width: 800px;
-      margin: auto;
-    }
+        .qr-img { width: 170px; height: 170px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.4); box-shadow: 0 0 25px rgba(255,255,255,0.3); margin-top: 10px; }
 
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      border-left: 4px solid var(--accent);
-      padding-left: 0.75rem;
-      color: var(--accent);
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      gap: 1rem;
-    }
-
-    li {
-      background-color: var(--card-bg);
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      font-size: 1.05rem;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    a:hover {
-      color: #a4ddff;
-    }
-
-    .contact p {
-      margin: 0.75rem 0;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background-color: #2a2a2c;
-      font-size: 0.95rem;
-      color: #aaa;
-      border-top: 1px solid #444;
-    }
-  </style>
+        footer { text-align: center; padding: 60px; color: #222; border-top: 1px solid #111; font-size: 11px; letter-spacing: 2px; }
+    </style>
 </head>
 <body>
-  <div class="navbar">
-    <img src="logo.png" alt="Logo Store">
-    <div>
-      <div class="site-title"><span class="kyre">Kyre</span><span class="pedia">pedia</span></div>
-      <div class="tagline">Aman • Murah • Garansi 100%</div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><img src="logo.png" alt="TAC LOGO"></div>
+            <div class="nav-links">
+                <a href="#about-section">ABOUT US</a>
+                <a href="#">COMMUNITY</a>
+                <a href="#">ONLINE SERVICE</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="nav-right">
+                <button class="btn-servant" onclick="toggleServantPage(true)">MEET OUR SERVANTS</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>TAC</h1>
+            <h2>Teens Academic & Community</h2>
+        </div>
+    </header>
+
+    <section id="about-section" class="about">
+        <div class="about-container">
+            <div class="about-image-wrapper">
+                <img src="gambaraboutus.png" alt="About TAC" class="about-image">
+            </div>
+            <div class="about-text">
+                <h3>ABOUT US</h3>
+                <p>Teens Academic Community (TAC) adalah sebuah komunitas yang berdedikasi untuk membimbing generasi muda agar bertumbuh secara akademis namun tetap memiliki akar spiritual yang sangat kuat di dalam Tuhan.</p>
+                <br>
+                <p>Kami percaya bahwa pendidikan dan iman harus berjalan berdampingan untuk menciptakan pemimpin masa depan yang berintegritas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pastor-mini">
+        <div class="pastor-container">
+            <img src="ourpastor.png" alt="Our Pastor" class="pastor-img-small">
+            <div class="pastor-info-small">
+                <h2>Our Pastor</h2>
+                <p>Senior Pastor of TAC</p>
+                <p style="text-transform: none; color: #fff; margin-top: 20px; line-height: 1.6;">"To lead by example and be a blessing."</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="servant-page">
+        <span class="close-page" onclick="toggleServantPage(false)">&times;</span>
+        <h1 style="text-align: center; letter-spacing: 10px; margin-bottom: 50px;">OUR SERVANTS</h1>
+        <div class="servants-grid">
+            <div class="servant-card" onclick="openBio('Jevan', '17 Tahun', 'Videographer', 'Youth Ministry', '200 Tahun', 'offer your bodies as a living sacrifice, holy and pleasing to God.')">
+                <div class="servant-img" style="background-image: url('fotojevan.jpg'); background-size: cover; background-position: center;"></div>
+                <h3>JEVAN</h3>
+                <p style="font-size: 11px; color: #555; margin-top: 10px;">VIEW PROFILE</p>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <header>
-    <p><strong style="color: #f58b54;">⭐ Terpercaya Sejak 2020 • Fast Respon • 100% Aman</strong></p>
-  </header>
+    <div id="bioModal" class="modal">
+        <div class="modal-content">
+            <span class="close-page" style="top: 15px; right: 25px; font-size: 35px;" onclick="closeBio()">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalName" style="font-family: 'Great Vibes', cursive; font-size: 60px;"></h2>
+                <p id="modalPos" style="color: #888; letter-spacing: 2px; text-transform: uppercase; font-size: 13px;"></p>
+            </div>
+            
+            <div class="bio-grid">
+                <div class="bio-item"><label>Umur</label><span id="modalAge"></span></div>
+                <div class="bio-item"><label>Departemen</label><span id="modalDept"></span></div>
+                <div class="bio-item"><label>Masa Layanan</label><span id="modalSince"></span></div>
+                <div class="bio-item bio-full"><label>Life Motto</label><span id="modalMotto"></span></div>
+            </div>
 
-  <section id="harga">
-    <h2>Daftar Harga</h2>
-    <ul>
-      <li><strong>Grandmaster:</strong> Rp2.000 / ⭐</li>
-      <li><strong>Epic:</strong> Rp3.000 / ⭐</li>
-      <li><strong>Legend:</strong> Rp5.000 / ⭐</li>
-      <li><strong>Mythic:</strong> Rp11.000 / ⭐</li>
-      <li><strong>Mythic Grading:</strong> Rp7.000 / win</li>
-      <li><strong>Honor:</strong> Rp17.000 / ⭐</li>
-      <li><strong>Glory:</strong> Rp25.000 / ⭐</li>
-      <li><strong>Immortal:</strong> Rp30.000 / ⭐</li>
-    </ul>
-  </section>
+            <div class="qr-area">
+                <img src="qrjevan.png" alt="QR Code" class="qr-img">
+            </div>
+        </div>
+    </div>
 
-  <section id="kontak" class="contact">
-    <h2>Order Sekarang</h2>
-    <p>📱 WhatsApp: <a href="https://wa.me/6285234444043" target="_blank">Chat Sekarang</a></p>
-    <p>📷 Instagram: <a href="https://instagram.com/kyrepedia" target="_blank">@kyrepedia</a></p>
-  </section>
+    <footer><p>&copy; 2026 TAC - Teens Academic Community.</p></footer>
 
-  <footer>
-    &copy; 2025 Joki MLBB Store. All rights reserved.
-  </footer>
+    <script>
+        function toggleServantPage(show) {
+            const page = document.getElementById('servant-page');
+            if (show) {
+                page.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                page.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function openBio(name, age, pos, dept, since, motto) {
+            document.getElementById('modalName').innerText = name;
+            document.getElementById('modalAge').innerText = age;
+            document.getElementById('modalPos').innerText = pos;
+            document.getElementById('modalDept').innerText = dept;
+            document.getElementById('modalSince').innerText = since;
+            document.getElementById('modalMotto').innerText = `"${motto}"`;
+            document.getElementById('bioModal').style.display = 'block';
+            // Mencegah background scroll saat modal buka
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeBio() { 
+            document.getElementById('bioModal').style.display = 'none'; 
+            // Cek jika halaman servant masih aktif, jangan kembalikan overflow body dulu
+            if (!document.getElementById('servant-page').classList.contains('active')) {
+                document.body.style.overflow = 'auto'; 
+            }
+        }
+        
+        window.onclick = function(e) { if(e.target == document.getElementById('bioModal')) closeBio(); }
+    </script>
 </body>
 </html>
